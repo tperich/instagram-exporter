@@ -11,8 +11,8 @@ from custom_types import FollowerStats
 load_dotenv()
 REDIS_HOST = os.getenv("REDIS_HOST")
 REDIS_PORT = os.getenv("REDIS_PORT")
-METRICS_HOST = "0.0.0.0"
-METRICS_PORT = 3000
+METRICS_HOST = os.getenv("METRICS_HOST")
+METRICS_PORT = os.getenv("METRICS_PORT")
 REFRESH_INTERVAL_SECONDS = 5
 
 

@@ -19,7 +19,7 @@ load_dotenv()
 
 IG_USERNAME = os.getenv("IG_USERNAME")
 IG_PASSWORD = os.getenv("IG_PASSWORD")
-TARGET_USER = os.getenv("TARGET_USER")
+IG_TARGET_USER = os.getenv("IG_TARGET_USER")
 REDIS_HOST = os.getenv("REDIS_HOST")
 REDIS_PORT = os.getenv("REDIS_PORT")
 
@@ -69,9 +69,9 @@ def login() -> None:
 
 
 def get_follower_stats() -> FollowerStats:
-    """Scrapes follower stats from TARGET_USER's account."""
+    """Scrapes follower stats from IG_TARGET_USER's account."""
     print("[+] Getting follower stats...")
-    driver.get(f"https://www.instagram.com/{TARGET_USER}")
+    driver.get(f"https://www.instagram.com/{IG_TARGET_USER}")
     time.sleep(3)
 
     followers_wrapper = driver.find_element(
