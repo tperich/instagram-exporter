@@ -4,6 +4,8 @@
 
 None of the scrapers I found online currently work (this one probably won't work too unless I keep it updated, check the time of the latest commits). It's currently set up to read from a Redis DB once I figure out Instagram's login threshold (you might get logged out and requested to change your account password).
 
+NOTE: If Instagram responds with a "wrong password" error even though the password is correct, try using your email instead of username.
+
 ## What
 
 There are two main scripts:
