@@ -15,10 +15,9 @@ METRICS_HOST = os.getenv("METRICS_HOST")
 METRICS_PORT = os.getenv("METRICS_PORT")
 REFRESH_INTERVAL_SECONDS = 5
 
+redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT)
 
 def read_from_db() -> FollowerStats:
-    redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT)
-
     if not redis_client.ping():
         print("[ERROR] Could not connect to redis, please check your credentials")
         return
@@ -32,11 +31,11 @@ def read_from_db() -> FollowerStats:
 def serve_metrics() -> None:
     follower_stats: FollowerStats = read_from_db()
 
-    # Create a gauge metric
+    # Create gauge metrics
     instagram_followers = Gauge("instagram_followers", "Number of Instagram followers")
     instagram_following = Gauge("instagram_following", "Number of Instagram followees")
 
-    # Set the initial value of the gauge
+    # Set the initial values of the gauges
     instagram_followers.set(follower_stats["followers"])
     instagram_following.set(follower_stats["following"])
 
@@ -46,7 +45,7 @@ def serve_metrics() -> None:
 
     # Keep the script running
     while True:
-        # Update the metric to the value of the "instagram_followers" key in Redis
+        # Update the metrics
         follower_stats = read_from_db()
         instagram_followers.set(follower_stats["followers"])
         instagram_following.set(follower_stats["following"])

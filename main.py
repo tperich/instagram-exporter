@@ -16,7 +16,6 @@ from webdriver_manager.firefox import GeckoDriverManager
 from custom_types import FollowerStats
 
 load_dotenv()
-
 IG_USERNAME = os.getenv("IG_USERNAME")
 IG_PASSWORD = os.getenv("IG_PASSWORD")
 IG_TARGET_USER = os.getenv("IG_TARGET_USER")
