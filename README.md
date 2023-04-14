@@ -25,7 +25,7 @@ There are two main scripts:
 
  1. Copy [.env.example](./.env.example) to `.env` and add necessary info
  2. Run `pip install -r requirements.txt` to install dependencies
- 3. Run `./main.py` to fetch follower stats
+ 3. Run `./main.py` to fetch follower stats (use `--headless` to run in headless mode)
  4. Run `./serve-metrics.py` to serve metrics
 
  ## Metrics
