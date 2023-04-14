@@ -40,7 +40,7 @@ def login() -> None:
     driver.get("https://www.instagram.com/accounts/login")
     time.sleep(1)
 
-    # Get rid of cookies popup
+    # Get rid of cookies popup (might not be necessary)
     cookies_btn = driver.find_element(
         By.XPATH, "//button[text()='Only allow essential cookies']"
     )
@@ -106,7 +106,6 @@ def write_to_db(follower_stats: FollowerStats) -> None:
 if __name__ == "__main__":
     follower_stats: FollowerStats = {}
 
-    # Try fetching stats first if the session hasn't expired
     try:
         login()
         time.sleep(3)
